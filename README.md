@@ -23,7 +23,7 @@ $ gblack --your-favourite-flags dumpconfig
 ```
 Note: This works only with geth v1.6.0 and above.
 
-### Programmatically interfacing geth nodes
+### Programmatically interfacing gblack nodes
 
 As a developer, sooner rather than later you'll want to start interacting with gblack and the Black network via your own programs and not manually through the console. To aid this, geth has built-in support for a JSON-RPC based APIs (standard APIs and gblack specific APIs). These can be exposed via HTTP, WebSockets and IPC (UNIX sockets on UNIX based platforms, and named pipes on Windows).
 
