@@ -70,4 +70,4 @@ In a private network setting, however, a single CPU miner instance is more than 
 ```shell
 $ gblack <usual-flags> --mine --miner.threads=1 --miner.etherbase=0x0000000000000000000000000000000000000000
 ```
-Which will start mining blocks and transactions on a single CPU thread, crediting all proceedings to the account specified by ```shell --miner.etherbase ```. You can further tune the mining by changing the default gas limit blocks converge to (```shell --miner.targetgaslimit ```)and the price transactions are accepted at (```shell --miner.gasprice ```).
+Which will start mining blocks and transactions on a single CPU thread, crediting all proceedings to the account specified by ``` --miner.etherbase ```. You can further tune the mining by changing the default gas limit blocks converge to (``` --miner.targetgaslimit ```)and the price transactions are accepted at (``` --miner.gasprice ```).
