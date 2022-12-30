@@ -23,7 +23,7 @@ $ gblack --your-favourite-flags dumpconfig
 ```
 Note: This works only with geth v1.6.0 and above.
 
-Programmatically interfacing geth nodes
+### Programmatically interfacing geth nodes
 
 As a developer, sooner rather than later you'll want to start interacting with gblack and the Black network via your own programs and not manually through the console. To aid this, geth has built-in support for a JSON-RPC based APIs (standard APIs and gblack specific APIs). These can be exposed via HTTP, WebSockets and IPC (UNIX sockets on UNIX based platforms, and named pipes on Windows).
 
@@ -62,7 +62,7 @@ You'll need to use your own programming environments' capabilities (libraries, t
 
 Note: Please understand the security implications of opening up an HTTP/WS based transport before doing so! Hackers on the internet are actively trying to subvert BlackChain nodes with exposed APIs! Further, all browser tabs can access locally running web servers, so malicious web pages could try to subvert locally available APIs!
 
-Running a private miner
+### Running a private miner
 
 Mining on the public Black network is a complex task as it's only feasible using GPUs, requiring an OpenCL or CUDA enabled ethminer instance. For information on such a setup, please consult the EtherMining subreddit and the ethminer repository.
 
