@@ -131,3 +131,12 @@ You'll need to use your own programming environments' capabilities (libraries, t
 
 
 Note: Please understand the security implications of opening up an HTTP/WS based transport before doing so! Hackers on the internet are actively trying to subvert BlackChain nodes with exposed APIs! Further, all browser tabs can access locally running web servers, so malicious web pages could try to subvert locally available APIs!
+
+Running a private miner
+
+Mining on the public Black network is a complex task as it's only feasible using GPUs, requiring an OpenCL or CUDA enabled ethminer instance. For information on such a setup, please consult the EtherMining subreddit and the ethminer repository.
+
+In a private network setting, however, a single CPU miner instance is more than enough for practical purposes as it can produce a stable stream of blocks at the correct intervals without needing heavy resources (consider running on a single thread, no need for multiple ones either). To start a gblack instance for mining, run it with all your usual flags, extended by:
+
+$ gblack <usual-flags> --mine --miner.threads=1 --miner.etherbase=0x0000000000000000000000000000000000000000
+Which will start mining blocks and transactions on a single CPU thread, crediting all proceedings to the account specified by --miner.etherbase. You can further tune the mining by changing the default gas limit blocks converge to (--miner.targetgaslimit) and the price transactions are accepted at (--miner.gasprice).
