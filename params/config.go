@@ -71,7 +71,7 @@ var (
 		MuirGlacierBlock:              big.NewInt(0),
 		BerlinBlock:                   big.NewInt(0),
 		LondonBlock:                   big.NewInt(0),
-		ArrowGlacierBlock:             big.NewInt(186_200),
+		ArrowGlacierBlock:             big.NewInt(187200),
 		Ethash:                        new(EthashConfig),
 	}
 
