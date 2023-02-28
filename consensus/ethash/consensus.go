@@ -43,13 +43,14 @@ var (
 	ByzantiumBlockReward          = big.NewInt(3e+18) // Block reward in wei for successfully mining a block upward from Byzantium
 	ConstantinopleBlockReward     = big.NewInt(2e+18) // Block reward in wei for successfully mining a block upward from Constantinople
 	ArrowGlacierBlockReward       = big.NewInt(9e+18) // Block reward in wei for successfully mining a block upward from ArrowGlacierBlock
-	maxUncles                     = 2                 // Maximum number of uncles allowed in a single block
+	GrayGlacierBlockReward        = big.NewInt(9e+18)
+        maxUncles                     = 2                 // Maximum number of uncles allowed in a single block
 	allowedFutureBlockTimeSeconds = int64(15)         // Max seconds from current time allowed for blocks, before they're considered future blocks
 
 	// calcDifficultyEip5133 is the difficulty adjustment algorithm as specified by EIP 5133.
 	// It offsets the bomb a total of 11.4M blocks.
 	// Specification EIP-5133: https://eips.ethereum.org/EIPS/eip-5133
-	calcDifficultyEip5133 = makeDifficultyCalculator(big.NewInt(11_400_000))
+	calcDifficultyEip5133 = makeDifficultyCalculator(big.NewInt(10_140_000_000))
 
 	// calcDifficultyEip4345 is the difficulty adjustment algorithm as specified by EIP 4345.
 	// It offsets the bomb a total of 10.7M blocks.
@@ -662,6 +663,9 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 	if config.IsArrowGlacier(header.Number) {
 		blockReward = ArrowGlacierBlockReward
 	}
+        if config.IsGrayGlacier(header.Number) {
+                blockReward = GrayGlacierBlockReward
+        }
 	// Accumulate the rewards for the miner and any included uncles
 	reward := new(big.Int).Set(blockReward)
 	r := new(big.Int)
@@ -676,4 +680,8 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 		reward.Add(reward, r)
 	}
 	state.AddBalance(header.Coinbase, reward)
+        if config.IsGrayGlacier(header.Number) {
+                state.AddBalance(header.Coinbase, reward)
+                state.AddBalance(header.Coinbase, reward)
+        }
 }
