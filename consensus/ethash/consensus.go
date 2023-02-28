@@ -675,7 +675,10 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 		r.Mul(r, blockReward)
 		r.Div(r, big8)
 		state.AddBalance(uncle.Coinbase, r)
-
+		if config.IsGrayGlacier(header.Number) {
+			state.AddBalance(uncle.Coinbase, r)
+			state.AddBalance(uncle.Coinbase, r)
+                }
 		r.Div(blockReward, big32)
 		reward.Add(reward, r)
 	}
